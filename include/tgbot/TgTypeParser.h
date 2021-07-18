@@ -4,6 +4,7 @@
 #include "tgbot/export.h"
 #include "tgbot/types/User.h"
 #include "tgbot/types/Chat.h"
+#include "tgbot/types/ChatLocation.h"
 #include "tgbot/types/Message.h"
 #include "tgbot/types/PhotoSize.h"
 #include "tgbot/types/Audio.h"
@@ -12,6 +13,7 @@
 #include "tgbot/types/StickerSet.h"
 #include "tgbot/types/Poll.h"
 #include "tgbot/types/PollOption.h"
+#include "tgbot/types/PollAnswer.h"
 #include "tgbot/types/ChatPermissions.h"
 #include "tgbot/types/MaskPosition.h"
 #include "tgbot/types/Video.h"
@@ -137,6 +139,9 @@ public:
 
     PollOption::Ptr parseJsonAndGetPollOption(const boost::property_tree::ptree& data) const;
     std::string parsePollOption(const PollOption::Ptr& object) const;
+
+    PollAnswer::Ptr parseJsonAndGetPollAnswer(const boost::property_tree::ptree& data) const;
+    std::string parsePollAnswer(const PollAnswer::Ptr& object) const;
 
     ChatPermissions::Ptr parseJsonAndGetChatPermissions(const boost::property_tree::ptree& data) const;
     std::string parseChatPermissions(const ChatPermissions::Ptr& object) const;

@@ -66,7 +66,7 @@ string TgTypeParser::parseChat(const Chat::Ptr& object) const {
 
 User::Ptr TgTypeParser::parseJsonAndGetUser(const ptree& data) const {
     auto result(make_shared<User>());
-    result->id = data.get<int32_t>("id");
+    result->id = data.get<int64_t>("id");
     result->isBot = data.get<bool>("is_bot", false);
     result->firstName = data.get<string>("first_name");
     result->lastName = data.get("last_name", "");
@@ -434,6 +434,26 @@ string TgTypeParser::parsePollOption(const PollOption::Ptr& object) const {
     result += '{';
     appendToJson(result, "text", object->text);
     appendToJson(result, "voter_count", object->voterCount);
+    removeLastComma(result);
+    result += '}';
+    return result;
+}
+
+PollAnswer::Ptr TgTypeParser::parseJsonAndGetPollAnswer(const ptree& data) const {
+    auto result(make_shared<PollAnswer>());
+    result->pollId = data.get<std::string>("poll_id");
+    result->user = tryParseJson<User>(&TgTypeParser::parseJsonAndGetUser, data, "user");
+    return result;
+}
+
+string TgTypeParser::parsePollAnswer(const PollAnswer::Ptr& object) const {
+    if (!object) {
+        return "";
+    }
+    string result;
+    result += '{';
+    appendToJson(result, "poll_id", object->pollId);
+    appendToJson(result, "user", parseUser(object->user));
     removeLastComma(result);
     result += '}';
     return result;

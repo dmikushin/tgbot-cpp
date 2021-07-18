@@ -14,7 +14,7 @@ public:
     typedef std::shared_ptr<PollOption> Ptr;
 
     /**
-     * @brief Option text, 1-100 characters.
+     * @brief Option text, 1-100 characters.````
      */
     std::string text;
 
