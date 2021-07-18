@@ -120,7 +120,7 @@ string TgTypeParser::parseMessageEntity(const MessageEntity::Ptr& object) const 
     appendToJson(result, "length", object->length);
     appendToJson(result, "url", object->url);
     appendToJson(result, "user", parseUser(object->user));
-    appendToJson(result, "language", data->language);
+    appendToJson(result, "language", object->language);
     removeLastComma(result);
     result += '}';
     return result;
@@ -230,7 +230,7 @@ string TgTypeParser::parseMessage(const Message::Ptr& object) const {
 PhotoSize::Ptr TgTypeParser::parseJsonAndGetPhotoSize(const ptree& data) const {
     auto result(make_shared<PhotoSize>());
     result->fileId = data.get<string>("file_id");
-    result->fileUniqueId = data.get<string>("file_unique_id", "");
+    result->fileUniqueId = data.get<string>("file_unique_id");
     result->width = data.get<int32_t>("width");
     result->height = data.get<int32_t>("height");
     result->fileSize = data.get("file_size", 0);
@@ -256,6 +256,7 @@ string TgTypeParser::parsePhotoSize(const PhotoSize::Ptr& object) const {
 Audio::Ptr TgTypeParser::parseJsonAndGetAudio(const ptree& data) const {
     auto result(make_shared<Audio>());
     result->fileId = data.get<string>("file_id");
+    result->fileUniqueId = data.get<string>("file_unique_id");
     result->duration = data.get<int32_t>("duration");
     result->performer = data.get<string>("performer", "");
     result->title = data.get<string>("title", "");
@@ -272,6 +273,7 @@ string TgTypeParser::parseAudio(const Audio::Ptr& object) const {
     string result;
     result += '{';
     appendToJson(result, "file_id", object->fileId);
+    appendToJson(result, "file_unique_id", object->fileUniqueId);
     appendToJson(result, "duration", object->duration);
     appendToJson(result, "mime_type", object->mimeType);
     appendToJson(result, "file_size", object->fileSize);
@@ -597,7 +599,11 @@ string TgTypeParser::parseGameHighScore(const GameHighScore::Ptr& object) const 
 
 Animation::Ptr TgTypeParser::parseJsonAndGetAnimation(const ptree& data) const {
     auto result(make_shared<Animation>());
-    result->fileId = data.get("file_id", "");
+    result->fileId = data.get<string>("file_id");
+    result->fileUniqueId = data.get<string>("file_unique_id");
+    result->width = data.get<int32_t>("width");
+    result->height = data.get<int32_t>("height");
+    result->duration = data.get<int32_t>("duration");
     result->thumb = tryParseJson<PhotoSize>(&TgTypeParser::parseJsonAndGetPhotoSize, data, "thumb");
     result->fileName = data.get("file_name", "");
     result->mimeType = data.get("mime_type", "");
@@ -612,6 +618,10 @@ string TgTypeParser::parseAnimation(const Animation::Ptr& object) const {
     string result;
     result += '{';
     appendToJson(result, "file_id", object->fileId);
+    appendToJson(result, "file_unique_id", object->fileId);
+    appendToJson(result, "width", object->width);
+    appendToJson(result, "height", object->height);
+    appendToJson(result, "duration", object->duration);
     appendToJson(result, "thumb", parsePhotoSize(object->thumb));
     appendToJson(result, "file_name", object->fileName);
     appendToJson(result, "mime_type", object->mimeType);

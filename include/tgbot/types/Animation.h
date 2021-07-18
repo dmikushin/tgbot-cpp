@@ -26,6 +26,30 @@ public:
     std::string fileId;
 
     /**
+     * @brief Unique identifier for this file, which is supposed to be the same over 
+     * time and for different bots. Can't be used to download or reuse the file.
+     */
+    std::string fileUniqueId;
+
+    /**
+     * @brief Video width as defined by sender.
+     */
+
+    int32_t width;
+
+    /**
+     * @brief Video height as defined by sender.
+     */
+
+    int32_t height;
+
+    /**
+     * @brief Duration of the video in seconds as defined by sender.
+     */
+
+    int32_t duration;
+
+    /**
      * @brief Optional. Animation thumbnail as defined by sender.
      */
     PhotoSize::Ptr thumb;
