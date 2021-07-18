@@ -105,6 +105,7 @@ MessageEntity::Ptr TgTypeParser::parseJsonAndGetMessageEntity(const ptree& data)
     result->length = data.get<int32_t>("length");
     result->url = data.get<string>("url", "");
     result->user = tryParseJson<User>(&TgTypeParser::parseJsonAndGetUser, data, "user");
+    result->language =  data.get<string>("language", "");
     return result;
 }
 
@@ -119,6 +120,7 @@ string TgTypeParser::parseMessageEntity(const MessageEntity::Ptr& object) const 
     appendToJson(result, "length", object->length);
     appendToJson(result, "url", object->url);
     appendToJson(result, "user", parseUser(object->user));
+    appendToJson(result, "language", data->language);
     removeLastComma(result);
     result += '}';
     return result;
