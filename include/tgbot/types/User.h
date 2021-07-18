@@ -60,7 +60,7 @@ public:
     /**
      * @brief Optional. True, if the bot supports inline queries. Returned only in getMe.
      */
-    bool supportInlineQueries;
+    bool supportsInlineQueries;
 };
 
 }

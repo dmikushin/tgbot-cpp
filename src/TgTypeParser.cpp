@@ -25,14 +25,17 @@ Chat::Ptr TgTypeParser::parseJsonAndGetChat(const ptree& data) const {
     result->username = data.get("username", "");
     result->firstName = data.get("first_name", "");
     result->lastName = data.get("last_name", "");
-    result->allMembersAreAdministrators = data.get<bool>("all_members_are_administrators", false);
     result->photo = tryParseJson<ChatPhoto>(&TgTypeParser::parseJsonAndGetChatPhoto, data, "photo");
+    result->description = data.get("bio", "");    
     result->description = data.get("description", "");
     result->inviteLink = data.get("invite_link", "");
     result->pinnedMessage = tryParseJson<Message>(&TgTypeParser::parseJsonAndGetMessage, data, "pinned_message");
     result->stickerSetName = data.get("sticker_set_name", "");
     result->canSetStickerSet = data.get<bool>("can_set_sticker_set", false);
-
+    result->slowModeDelay = data.get<int32_t>("low_mode_delay");
+    result->messageAutoDeleteTime = data.get<int32_t>("message_auto_delete_time");
+    result->linkedChatId = data.get<int64_t>("linked_chat_id");
+    result->location = tryParseJson<ChatLocation>(&TgTypeParser::parseJsonAndGetChatLocation, data, "location");
     return result;
 }
 
@@ -69,9 +72,9 @@ User::Ptr TgTypeParser::parseJsonAndGetUser(const ptree& data) const {
     result->lastName = data.get("last_name", "");
     result->username = data.get("username", "");
     result->languageCode = data.get("language_code", "");
-    result->canJoinGroups = data.get("can_join_groups", false);
-    result->canReadAllGroupMessages = data.get("can_read_all_group_messages", false);
-    result->supportInlineQueries = data.get("supports_inline_queries", false);
+    result->canJoinGroups = data.get<bool>("can_join_groups", false);
+    result->canReadAllGroupMessages = data.get<bool>("can_read_all_group_messages", false);
+    result->supportsInlineQueries = data.get<bool>("supports_inline_queries", false);
     return result;
 }
 
@@ -87,6 +90,9 @@ string TgTypeParser::parseUser(const User::Ptr& object) const {
     appendToJson(result, "last_name", object->lastName);
     appendToJson(result, "username", object->username);
     appendToJson(result, "language_code", object->languageCode);
+    appendToJson(result, "can_join_groups", object->canJoinGroups);
+    appendToJson(result, "can_read_all_group_messages", object->canReadAllGroupMessages);
+    appendToJson(result, "supports_inline_queries", object->supportsInlineQueries);
     removeLastComma(result);
     result += '}';
     return result;
@@ -2200,6 +2206,25 @@ std::string TgTypeParser::parseSuccessfulPayment(const SuccessfulPayment::Ptr& o
     return result;
 }
 
+ChatLocation::Ptr TgTypeParser::parseJsonAndGetChatLocation(const ptree& data) const {
+    auto result(make_shared<ChatLocation>());
+    result->location = tryParseJson<Location>(&TgTypeParser::parseJsonAndGetLocation, data, "location");
+    result->address = data.get("address", 0);
+    return result;
+}
+
+string TgTypeParser::parseChatLocation(const ChatLocation::Ptr& object) const {
+    if (!object) {
+        return "";
+    }
+    string result;
+    result += '{';
+    appendToJson(result, "location", parseLocation(object->location));
+    appendToJson(result, "address", object->address);
+    removeLastComma(result);
+    result += '}';
+    return result;
+}
 
 void TgTypeParser::appendToJson(string& json, const string& varName, const string& value) const {
     if (value.empty()) {
@@ -2217,4 +2242,5 @@ void TgTypeParser::appendToJson(string& json, const string& varName, const strin
     }
     json += ',';
 }
+
 }

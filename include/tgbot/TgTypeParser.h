@@ -324,6 +324,9 @@ public:
     SuccessfulPayment::Ptr parseJsonAndGetSuccessfulPayment(const boost::property_tree::ptree& data) const;
     std::string parseSuccessfulPayment(const SuccessfulPayment::Ptr& object) const;
 
+    ChatLocation::Ptr parseJsonAndGetChatLocation(const boost::property_tree::ptree& data) const;
+    std::string parseChatLocation(const ChatLocation::Ptr& object) const;
+
     inline boost::property_tree::ptree parseJson(const std::string& json) const {
         boost::property_tree::ptree tree;
         std::istringstream input(json);

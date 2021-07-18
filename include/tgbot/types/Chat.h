@@ -3,6 +3,7 @@
 
 #include "tgbot/types/ChatPhoto.h"
 #include "tgbot/types/ChatPermissions.h"
+#include "tgbot/types/ChatLocation.h"
 
 #include <cstdint>
 #include <string>
@@ -61,16 +62,16 @@ public:
     std::string lastName;
 
     /**
-     * @brief Optional. True if a group
-     * has ‘All Members Are Admins’ enabled.
-     */
-    bool allMembersAreAdministrators;
-
-    /**
      * @brief Optional. Chat photo.
      * Returned only in getChat.
      */
     ChatPhoto::Ptr photo;
+
+    /**
+     * @brief Optional. Bio of the other party in a private chat.
+     * Returned only in getChat.
+     */
+    std::string bio;
 
     /**
      * @brief Optional. Description, for supergroups and channel chats.
@@ -97,6 +98,18 @@ public:
     ChatPermissions::Ptr permissions;
 
     /**
+     * @brief Optional. For supergroups, the minimum allowed delay between consecutive 
+     * messages sent by each unpriviledged user. Returned only in getChat.
+     */
+    int32_t slowModeDelay;
+
+    /**
+     * @brief Optional. The time after which all messages sent to the chat will be 
+     * automatically deleted; in seconds. Returned only in getChat.
+     */
+    int32_t messageAutoDeleteTime;
+
+    /**
      * @brief Optional. For supergroups, name of group sticker set.
      * Returned only in getChat.
      */
@@ -107,6 +120,23 @@ public:
      * Returned only in getChat.
      */
     bool canSetStickerSet;
+
+    /**
+     * @brief Optional. Unique identifier for the linked chat, i.e. the discussion group 
+     * identifier for a channel and vice versa; for supergroups and channel chats. 
+     * This identifier may be greater than 32 bits and some programming languages may 
+     * have difficulty/silent defects in interpreting it. But it is smaller than 52 bits, 
+     * so a signed 64 bit integer or double-precision float type are safe for storing 
+     * this identifier. 
+     * Returned only in getChat.
+     */
+    int64_t linkedChatId;
+
+    /**
+     * @brief Optional. For supergroups, the location to which the supergroup is connected. 
+     * Returned only in getChat.
+     */
+    ChatLocation::Ptr location; 
 };
 
 }
