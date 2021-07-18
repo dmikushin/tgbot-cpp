@@ -46,6 +46,21 @@ public:
      * @brief Optional. IETF language tag of the user's language.
      */
     std::string languageCode;
+
+    /**
+     * @brief Optional. True, if the bot can be invited to groups. Returned only in getMe.
+     */
+    bool canJoinGroups;
+
+    /**
+     * @brief Optional. True, if privacy mode is disabled for the bot. Returned only in getMe.
+     */
+    bool canReadAllGroupMessages;
+
+    /**
+     * @brief Optional. True, if the bot supports inline queries. Returned only in getMe.
+     */
+    bool supportInlineQueries;
 };
 
 }

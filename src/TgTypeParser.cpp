@@ -69,6 +69,9 @@ User::Ptr TgTypeParser::parseJsonAndGetUser(const ptree& data) const {
     result->lastName = data.get("last_name", "");
     result->username = data.get("username", "");
     result->languageCode = data.get("language_code", "");
+    result->canJoinGroups = data.get("can_join_groups", false);
+    result->canReadAllGroupMessages = data.get("can_read_all_group_messages", false);
+    result->supportInlineQueries = data.get("supports_inline_queries", false);
     return result;
 }
 
