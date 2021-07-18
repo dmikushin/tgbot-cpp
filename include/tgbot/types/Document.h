@@ -25,10 +25,17 @@ public:
     std::string fileId;
 
     /**
+     * @brief Unique identifier for this file, 
+     * which is supposed to be the same over time and for different bots. 
+     * Can't be used to download or reuse the file.
+     */
+    std::string fileUniqueId;
+
+    /**
      * @brief Optional. Document thumbnail as defined by sender.
      */
     PhotoSize::Ptr thumb;
-
+    
     /**
      * @brief Optional. Original filename as defined by sender.
      */

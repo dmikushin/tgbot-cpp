@@ -286,6 +286,7 @@ string TgTypeParser::parseAudio(const Audio::Ptr& object) const {
 Document::Ptr TgTypeParser::parseJsonAndGetDocument(const ptree& data) const {
     auto result(make_shared<Document>());
     result->fileId = data.get<string>("file_id");
+    result->fileUniqueId = data.get<string>("file_unique_id");
     result->thumb = tryParseJson<PhotoSize>(&TgTypeParser::parseJsonAndGetPhotoSize, data, "thumb");
     result->fileName = data.get("file_name", "");
     result->mimeType = data.get("mime_type", "");
@@ -300,6 +301,7 @@ string TgTypeParser::parseDocument(const Document::Ptr& object) const {
     string result;
     result += '{';
     appendToJson(result, "file_id", object->fileId);
+    appendToJson(result, "file_unique_id", object->fileUniqueId);
     appendToJson(result, "thumb", parsePhotoSize(object->thumb));
     appendToJson(result, "file_name", object->fileName);
     appendToJson(result, "mime_type", object->mimeType);
@@ -312,6 +314,7 @@ string TgTypeParser::parseDocument(const Document::Ptr& object) const {
 Sticker::Ptr TgTypeParser::parseJsonAndGetSticker(const ptree& data) const {
     auto result(make_shared<Sticker>());
     result->fileId = data.get<string>("file_id");
+    result->fileUniqueId = data.get<string>("file_unique_id");
     result->width = data.get<int32_t>("width");
     result->height = data.get<int32_t>("height");
     result->isAnimated = data.get<bool>("is_animated", false);
@@ -330,6 +333,7 @@ string TgTypeParser::parseSticker(const Sticker::Ptr& object) const {
     string result;
     result += '{';
     appendToJson(result, "file_id", object->fileId);
+    appendToJson(result, "file_unique_id", object->fileUniqueId);
     appendToJson(result, "width", object->width);
     appendToJson(result, "height", object->height);
     appendToJson(result, "is_animated", object->isAnimated);
@@ -470,6 +474,7 @@ string TgTypeParser::parseChatPermissions(const ChatPermissions::Ptr& object) co
 Video::Ptr TgTypeParser::parseJsonAndGetVideo(const ptree& data) const {
     auto result(make_shared<Video>());
     result->fileId = data.get<string>("file_id");
+    result->fileUniqueId = data.get<string>("file_unique_id");
     result->width = data.get<int32_t>("width");
     result->height = data.get<int32_t>("height");
     result->duration = data.get<int32_t>("duration");
@@ -486,6 +491,7 @@ string TgTypeParser::parseVideo(const Video::Ptr& object) const {
     string result;
     result += '{';
     appendToJson(result, "file_id", object->fileId);
+    appendToJson(result, "file_unique_id", object->fileUniqueId);
     appendToJson(result, "width", object->width);
     appendToJson(result, "height", object->height);
     appendToJson(result, "duration", object->duration);
@@ -500,6 +506,7 @@ string TgTypeParser::parseVideo(const Video::Ptr& object) const {
 Voice::Ptr TgTypeParser::parseJsonAndGetVoice(const ptree& data) const {
     auto result(make_shared<Voice>());
     result->fileId = data.get<string>("file_id");
+    result->fileUniqueId = data.get<string>("file_unique_id");
     result->duration = data.get<int32_t>("duration");
     result->mimeType = data.get("mime_type", "");
     result->fileSize = data.get("file_size", 0);
@@ -513,6 +520,7 @@ string TgTypeParser::parseVoice(const Voice::Ptr& object) const {
     string result;
     result += '{';
     appendToJson(result, "file_id", object->fileId);
+    appendToJson(result, "file_unique_id", object->fileUniqueId);
     appendToJson(result, "duration", object->duration);
     appendToJson(result, "mime_type", object->mimeType);
     appendToJson(result, "file_size", object->fileSize);
@@ -524,6 +532,7 @@ string TgTypeParser::parseVoice(const Voice::Ptr& object) const {
 VideoNote::Ptr TgTypeParser::parseJsonAndGetVideoNote(const ptree& data) const {
     auto result(make_shared<VideoNote>());
     result->fileId = data.get<string>("file_id");
+    result->fileUniqueId = data.get<string>("file_unique_id");
     result->length = data.get<int32_t>("length");
     result->duration = data.get<int32_t>("duration");
     result->thumb = tryParseJson<PhotoSize>(&TgTypeParser::parseJsonAndGetPhotoSize, data, "thumb");
@@ -538,6 +547,7 @@ string TgTypeParser::parseVideoNote(const VideoNote::Ptr& object) const {
     string result;
     result += '{';
     appendToJson(result, "file_id", object->fileId);
+    appendToJson(result, "file_unique_id", object->fileUniqueId);
     appendToJson(result, "length", object->length);
     appendToJson(result, "duration", object->duration);
     appendToJson(result, "thumb", parsePhotoSize(object->thumb));

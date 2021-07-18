@@ -26,6 +26,13 @@ public:
     std::string fileId;
 
     /**
+     * @brief Unique identifier for this file, 
+     * which is supposed to be the same over time and for different bots. 
+     * Can't be used to download or reuse the file.
+     */
+    std::string fileUniqueId;
+
+    /**
      * @brief Optional. Sticker width.
      */
     std::int32_t width;
@@ -36,8 +43,8 @@ public:
     std::int32_t height;
 
     /**
- * @brief True, if the sticker is animated.
-    */
+     * @brief True, if the sticker is animated.
+     */
     bool isAnimated = false;
 
     /**

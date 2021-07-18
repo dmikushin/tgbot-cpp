@@ -22,6 +22,13 @@ public:
     std::string fileId;
 
     /**
+     * @brief Unique identifier for this file, 
+     * which is supposed to be the same over time and for different bots. 
+     * Can't be used to download or reuse the file.
+     */
+    std::string fileUniqueId;
+
+    /**
      * @brief Duration of the audio in seconds as defined by sender.
      */
     std::int32_t duration;
