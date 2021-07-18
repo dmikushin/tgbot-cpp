@@ -400,7 +400,16 @@ Poll::Ptr TgTypeParser::parseJsonAndGetPoll(const ptree& data) const {
     result->id = data.get("id", 0);
     result->question = data.get("question", "");
     result->options = parseJsonAndGetArray<PollOption>(&TgTypeParser::parseJsonAndGetPollOption, data, "options");
+    result->totalVoterCount = data.get<int32_t>("total_voter_count");
     result->isClosed = data.get<bool>("is_closed");
+    result->isAnonymouss = data.get<bool>("is_anonymous");
+    result->type = data.get<int32_t>("type");
+    result->allowsMultipleAnswers = data.get<bool>("allows_multiple_answers");
+    result->correctOptionId = data.get("correct_option_id", 0);
+    result->explanation = data.get("explanation", "");
+    result->explanationEntities = parseJsonAndGetArray<MessageEntity>(&TgTypeParser::parseJsonAndGetMessageEntity, data, "explanation_entities");
+    result->openPeriod = data.get("open_period", 0);
+    result->closeDate = data.get("close_date", 0);
     return result;
 }
 
@@ -413,7 +422,16 @@ string TgTypeParser::parsePoll(const Poll::Ptr& object) const {
     appendToJson(result, "id", object->id);
     appendToJson(result, "question", object->question);
     appendToJson(result, "options", parseArray(&TgTypeParser::parsePollOption, object->options));
+    appendToJson(result, "total_voter_count", object->totalVoterCount);
     appendToJson(result, "is_closed", object->isClosed);
+    appendToJson(result, "is_anonymous", object->isAnonymouss);
+    appendToJson(result, "type", object->type);
+    appendToJson(result, "allows_multiple_answers", object->allowsMultipleAnswers);
+    appendToJson(result, "correct_option_id", object->correctOptionId);
+    appendToJson(result, "explanation", object->explanation);
+    appendToJson(result, "explanation_entities", parseArray(&TgTypeParser::parseMessageEntity, object->explanationEntities));
+    appendToJson(result, "open_period", object->openPeriod);
+    appendToJson(result, "close_date", object->closeDate);
     removeLastComma(result);
     result += '}';
     return result;
