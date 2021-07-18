@@ -2,7 +2,6 @@
 #define TGBOT_CPP_CHAT_LOCATION_H
 
 #include "tgbot/types/Location.h"
-
 #include <memory>
 
 namespace TgBot {

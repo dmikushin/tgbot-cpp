@@ -707,8 +707,12 @@ string TgTypeParser::parseContact(const Contact::Ptr& object) const {
 
 Location::Ptr TgTypeParser::parseJsonAndGetLocation(const ptree& data) const {
     auto result(make_shared<Location>());
-    result->longitude = data.get<float>("longitude", 0);
-    result->latitude = data.get<float>("latitude", 0);
+    result->longitude = data.get<float>("longitude", 0.0);
+    result->latitude = data.get<float>("latitude", 0.0);
+    result->horizontalOccuracy = data.get<float>("horizontal_occuracy", 0.0);
+    result->livePeriod = data.get<int32_t>("live_period", 0);
+    result->heading = data.get<int32_t>("heading", 0);
+    result->proximityAlertRadious = data.get<float>("latituproximity_alert_radiousde", 0);
     return result;
 }
 
@@ -720,6 +724,10 @@ string TgTypeParser::parseLocation(const Location::Ptr& object) const {
     result += '{';
     appendToJson(result, "longitude", object->longitude);
     appendToJson(result, "latitude", object->latitude);
+    appendToJson(result, "horizontal_occuracy", object->horizontalOccuracy);
+    appendToJson(result, "live_period", object->livePeriod);
+    appendToJson(result, "heading", object->heading);
+    appendToJson(result, "proximity_alert_radious", object->proximityAlertRadious);
     removeLastComma(result);
     result += '}';
     return result;

@@ -24,6 +24,31 @@ public:
      * @brief Latitude as defined by sender.
      */
     float latitude;
+
+    /**
+     * @brief Optional. The radius of uncertainty for the location,
+     * measured in meters; 0-1500
+     */
+    float horizontalOccuracy;
+
+    /**
+     * @brief Optional. Time relative to the message sending date, 
+     * during which the location can be updated, 
+     * in seconds. For active live locations only.
+     */
+    int32_t livePeriod;
+
+    /**
+     * @brief Optional. The direction in which user is moving, in degrees; 
+     * 1-360. For active live locations only.
+     */
+    int32_t heading;
+
+    /**
+     * @brief Optional. Maximum distance for proximity alerts about 
+     * approaching another chat member, in meters. For sent live locations only
+     */
+    int32_t proximityAlertRadious;
 };
 
 }

@@ -41,6 +41,18 @@ public:
      * @brief Optional. Foursquare type of the venue. (For example, “arts_entertainment/default”, “arts_entertainment/aquarium” or “food/icecream”.)
      */
     std::string foursquareType;
+
+    /**
+     * @brief Optional. Google Places identifier of the venue.
+     */
+    std::string googlePlaceId;
+
+    /**
+     * @brief Optional. Google Places type of the venue. (See supported types.)
+     *      */
+    std::string googlePlaceType;
+
+
 };
 }
 
