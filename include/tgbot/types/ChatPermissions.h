@@ -54,9 +54,6 @@ namespace TgBot {
          * @brief Optional. True, if the user is allowed to pin messages. Ignored in public supergroups.
          */
         bool canPinMessages = false;
-
-
-
     };
 }
 

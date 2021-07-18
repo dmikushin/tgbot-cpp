@@ -1,6 +1,8 @@
 #ifndef TGBOT_CPP_KEYBOARDBUTTON_H
 #define TGBOT_CPP_KEYBOARDBUTTON_H
 
+#include "tgbot/types/KeyboardButtonPollType.h"
+
 #include <string>
 #include <memory>
 
@@ -35,6 +37,11 @@ public:
      * @brief Optional. If True, the user's current location will be sent when the button is pressed. Available in private chats only.
      */
     bool requestLocation = false;
+
+    /**
+     * @brief Optional. If specified, the user will be asked to create a poll and send it to the bot when the button is pressed. Available in private chats only
+     */
+    KeyboardButtonPollType::Ptr requestPoll;
 };
 
 }

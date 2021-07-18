@@ -28,6 +28,13 @@ public:
     std::string fileId;
 
     /**
+     * @brief Unique identifier for this file, 
+     * which is supposed to be the same over time and for different bots. 
+     * Can't be used to download or reuse the file.
+     */
+    std::string fileUniqueId;
+    
+    /**
      * @brief Optional. File size, if known
      */
     std::int32_t fileSize;

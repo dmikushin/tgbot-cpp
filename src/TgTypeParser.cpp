@@ -893,6 +893,7 @@ string TgTypeParser::parseInputMedia(const InputMedia::Ptr& object) const {
 File::Ptr TgTypeParser::parseJsonAndGetFile(const boost::property_tree::ptree& data) const {
     auto result(make_shared<File>());
     result->fileId = data.get<string>("file_id");
+    result->fileUniqueId = data.get<string>("file_unique_id");
     result->fileSize = data.get<int32_t>("file_size", 0);
     result->filePath = data.get<string>("file_path", "");
     return result;
@@ -905,6 +906,7 @@ string TgTypeParser::parseFile(const File::Ptr& object) const {
     string result;
     result += '{';
     appendToJson(result, "file_id", object->fileId);
+    appendToJson(result, "file_unique_id", object->fileUniqueId);
     appendToJson(result, "file_size", object->fileSize);
     appendToJson(result, "file_path", object->filePath);
     removeLastComma(result);
@@ -919,6 +921,7 @@ ReplyKeyboardMarkup::Ptr TgTypeParser::parseJsonAndGetReplyKeyboardMarkup(const 
     }
     result->resizeKeyboard = data.get<bool>("resize_keyboard", false);
     result->oneTimeKeyboard = data.get<bool>("one_time_keyboard", false);
+    result->inputFieldPlaceholder = data.get<string>("input_field_placeholder", "");
     result->selective = data.get<bool>("selective", false);
     return result;
 }
@@ -944,6 +947,7 @@ std::string TgTypeParser::parseReplyKeyboardMarkup(const ReplyKeyboardMarkup::Pt
     result += "],";
     appendToJson(result, "resize_keyboard", object->resizeKeyboard);
     appendToJson(result, "one_time_keyboard", object->oneTimeKeyboard);
+    appendToJson(result, "input_field_placeholder", object->inputFieldPlaceholder);
     appendToJson(result, "selective", object->selective);
     removeLastComma(result);
     result += '}';
@@ -993,6 +997,7 @@ std::string TgTypeParser::parseReplyKeyboardRemove(const ReplyKeyboardRemove::Pt
 
 ForceReply::Ptr TgTypeParser::parseJsonAndGetForceReply(const boost::property_tree::ptree& data) const {
     auto result(make_shared<ForceReply>());
+    result->inputFieldPlaceholder = data.get<std::string>("input_field_placeholder", "");
     result->selective = data.get<bool>("selective");
     return result;
 }
@@ -1004,6 +1009,7 @@ std::string TgTypeParser::parseForceReply(const ForceReply::Ptr& object) const {
     string result;
     result += '{';
     appendToJson(result, "force_reply", object->forceReply);
+    appendToJson(result, "input_field_placeholder", object->forceReply);
     appendToJson(result, "selective", object->selective);
     removeLastComma(result);
     result += '}';
@@ -1048,7 +1054,9 @@ std::string TgTypeParser::parseChatMember(const ChatMember::Ptr& object) const {
 ChatPhoto::Ptr TgTypeParser::parseJsonAndGetChatPhoto(const boost::property_tree::ptree& data) const {
     auto result(make_shared<ChatPhoto>());
     result->smallFileId = data.get("small_file_id", "");
+    result->smallFileUniqueId = data.get("small_file_unique_id", "");
     result->bigFileId = data.get("big_file_id", "");
+    result->bigFileUniqueId = data.get("big_file_unique_id", "");
     return result;
 }
 
@@ -1059,7 +1067,9 @@ std::string TgTypeParser::parseChatPhoto(const ChatPhoto::Ptr& object) const {
     string result;
     result += '{';
     appendToJson(result, "small_file_id", object->smallFileId);
+    appendToJson(result, "small_file_unique_id", object->smallFileId);
     appendToJson(result, "big_file_id", object->bigFileId);
+    appendToJson(result, "big_file_unique_id", object->bigFileId);
     removeLastComma(result);
     result += '}';
     return result;
