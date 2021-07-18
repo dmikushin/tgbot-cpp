@@ -230,6 +230,7 @@ string TgTypeParser::parseMessage(const Message::Ptr& object) const {
 PhotoSize::Ptr TgTypeParser::parseJsonAndGetPhotoSize(const ptree& data) const {
     auto result(make_shared<PhotoSize>());
     result->fileId = data.get<string>("file_id");
+    result->fileUniqueId = data.get<string>("file_unique_id", "");
     result->width = data.get<int32_t>("width");
     result->height = data.get<int32_t>("height");
     result->fileSize = data.get("file_size", 0);
@@ -243,6 +244,7 @@ string TgTypeParser::parsePhotoSize(const PhotoSize::Ptr& object) const {
     string result;
     result += '{';
     appendToJson(result, "file_id", object->fileId);
+    appendToJson(result, "file_unique_id", object->fileUniqueId);
     appendToJson(result, "width", object->width);
     appendToJson(result, "height", object->height);
     appendToJson(result, "file_size", object->fileSize);
