@@ -1,0 +1,72 @@
+[
+{
+  "directory": "/home/naveen/CLionProjects/tgbot-cpp/build",
+  "command": "/usr/bin/g++-8  -DBOOST_ALL_DYN_LINK -DHAVE_CURL -I/home/naveen/CLionProjects/tgbot-cpp/include   -Wall -g -fPIC   -std=c++14 -o CMakeFiles/TgBot.dir/src/Api.cpp.o -c /home/naveen/CLionProjects/tgbot-cpp/src/Api.cpp",
+  "file": "/home/naveen/CLionProjects/tgbot-cpp/src/Api.cpp"
+},
+{
+  "directory": "/home/naveen/CLionProjects/tgbot-cpp/build",
+  "command": "/usr/bin/g++-8  -DBOOST_ALL_DYN_LINK -DHAVE_CURL -I/home/naveen/CLionProjects/tgbot-cpp/include   -Wall -g -fPIC   -std=c++14 -o CMakeFiles/TgBot.dir/src/Bot.cpp.o -c /home/naveen/CLionProjects/tgbot-cpp/src/Bot.cpp",
+  "file": "/home/naveen/CLionProjects/tgbot-cpp/src/Bot.cpp"
+},
+{
+  "directory": "/home/naveen/CLionProjects/tgbot-cpp/build",
+  "command": "/usr/bin/g++-8  -DBOOST_ALL_DYN_LINK -DHAVE_CURL -I/home/naveen/CLionProjects/tgbot-cpp/include   -Wall -g -fPIC   -std=c++14 -o CMakeFiles/TgBot.dir/src/EventHandler.cpp.o -c /home/naveen/CLionProjects/tgbot-cpp/src/EventHandler.cpp",
+  "file": "/home/naveen/CLionProjects/tgbot-cpp/src/EventHandler.cpp"
+},
+{
+  "directory": "/home/naveen/CLionProjects/tgbot-cpp/build",
+  "command": "/usr/bin/g++-8  -DBOOST_ALL_DYN_LINK -DHAVE_CURL -I/home/naveen/CLionProjects/tgbot-cpp/include   -Wall -g -fPIC   -std=c++14 -o CMakeFiles/TgBot.dir/src/TgException.cpp.o -c /home/naveen/CLionProjects/tgbot-cpp/src/TgException.cpp",
+  "file": "/home/naveen/CLionProjects/tgbot-cpp/src/TgException.cpp"
+},
+{
+  "directory": "/home/naveen/CLionProjects/tgbot-cpp/build",
+  "command": "/usr/bin/g++-8  -DBOOST_ALL_DYN_LINK -DHAVE_CURL -I/home/naveen/CLionProjects/tgbot-cpp/include   -Wall -g -fPIC   -std=c++14 -o CMakeFiles/TgBot.dir/src/TgTypeParser.cpp.o -c /home/naveen/CLionProjects/tgbot-cpp/src/TgTypeParser.cpp",
+  "file": "/home/naveen/CLionProjects/tgbot-cpp/src/TgTypeParser.cpp"
+},
+{
+  "directory": "/home/naveen/CLionProjects/tgbot-cpp/build",
+  "command": "/usr/bin/g++-8  -DBOOST_ALL_DYN_LINK -DHAVE_CURL -I/home/naveen/CLionProjects/tgbot-cpp/include   -Wall -g -fPIC   -std=c++14 -o CMakeFiles/TgBot.dir/src/net/BoostHttpOnlySslClient.cpp.o -c /home/naveen/CLionProjects/tgbot-cpp/src/net/BoostHttpOnlySslClient.cpp",
+  "file": "/home/naveen/CLionProjects/tgbot-cpp/src/net/BoostHttpOnlySslClient.cpp"
+},
+{
+  "directory": "/home/naveen/CLionProjects/tgbot-cpp/build",
+  "command": "/usr/bin/g++-8  -DBOOST_ALL_DYN_LINK -DHAVE_CURL -I/home/naveen/CLionProjects/tgbot-cpp/include   -Wall -g -fPIC   -std=c++14 -o CMakeFiles/TgBot.dir/src/net/CurlHttpClient.cpp.o -c /home/naveen/CLionProjects/tgbot-cpp/src/net/CurlHttpClient.cpp",
+  "file": "/home/naveen/CLionProjects/tgbot-cpp/src/net/CurlHttpClient.cpp"
+},
+{
+  "directory": "/home/naveen/CLionProjects/tgbot-cpp/build",
+  "command": "/usr/bin/g++-8  -DBOOST_ALL_DYN_LINK -DHAVE_CURL -I/home/naveen/CLionProjects/tgbot-cpp/include   -Wall -g -fPIC   -std=c++14 -o CMakeFiles/TgBot.dir/src/net/HttpParser.cpp.o -c /home/naveen/CLionProjects/tgbot-cpp/src/net/HttpParser.cpp",
+  "file": "/home/naveen/CLionProjects/tgbot-cpp/src/net/HttpParser.cpp"
+},
+{
+  "directory": "/home/naveen/CLionProjects/tgbot-cpp/build",
+  "command": "/usr/bin/g++-8  -DBOOST_ALL_DYN_LINK -DHAVE_CURL -I/home/naveen/CLionProjects/tgbot-cpp/include   -Wall -g -fPIC   -std=c++14 -o CMakeFiles/TgBot.dir/src/net/TgLongPoll.cpp.o -c /home/naveen/CLionProjects/tgbot-cpp/src/net/TgLongPoll.cpp",
+  "file": "/home/naveen/CLionProjects/tgbot-cpp/src/net/TgLongPoll.cpp"
+},
+{
+  "directory": "/home/naveen/CLionProjects/tgbot-cpp/build",
+  "command": "/usr/bin/g++-8  -DBOOST_ALL_DYN_LINK -DHAVE_CURL -I/home/naveen/CLionProjects/tgbot-cpp/include   -Wall -g -fPIC   -std=c++14 -o CMakeFiles/TgBot.dir/src/net/Url.cpp.o -c /home/naveen/CLionProjects/tgbot-cpp/src/net/Url.cpp",
+  "file": "/home/naveen/CLionProjects/tgbot-cpp/src/net/Url.cpp"
+},
+{
+  "directory": "/home/naveen/CLionProjects/tgbot-cpp/build",
+  "command": "/usr/bin/g++-8  -DBOOST_ALL_DYN_LINK -DHAVE_CURL -I/home/naveen/CLionProjects/tgbot-cpp/include   -Wall -g -fPIC   -std=c++14 -o CMakeFiles/TgBot.dir/src/tools/FileTools.cpp.o -c /home/naveen/CLionProjects/tgbot-cpp/src/tools/FileTools.cpp",
+  "file": "/home/naveen/CLionProjects/tgbot-cpp/src/tools/FileTools.cpp"
+},
+{
+  "directory": "/home/naveen/CLionProjects/tgbot-cpp/build",
+  "command": "/usr/bin/g++-8  -DBOOST_ALL_DYN_LINK -DHAVE_CURL -I/home/naveen/CLionProjects/tgbot-cpp/include   -Wall -g -fPIC   -std=c++14 -o CMakeFiles/TgBot.dir/src/tools/StringTools.cpp.o -c /home/naveen/CLionProjects/tgbot-cpp/src/tools/StringTools.cpp",
+  "file": "/home/naveen/CLionProjects/tgbot-cpp/src/tools/StringTools.cpp"
+},
+{
+  "directory": "/home/naveen/CLionProjects/tgbot-cpp/build",
+  "command": "/usr/bin/g++-8  -DBOOST_ALL_DYN_LINK -DHAVE_CURL -I/home/naveen/CLionProjects/tgbot-cpp/include   -Wall -g -fPIC   -std=c++14 -o CMakeFiles/TgBot.dir/src/types/InlineQueryResult.cpp.o -c /home/naveen/CLionProjects/tgbot-cpp/src/types/InlineQueryResult.cpp",
+  "file": "/home/naveen/CLionProjects/tgbot-cpp/src/types/InlineQueryResult.cpp"
+},
+{
+  "directory": "/home/naveen/CLionProjects/tgbot-cpp/build",
+  "command": "/usr/bin/g++-8  -DBOOST_ALL_DYN_LINK -DHAVE_CURL -I/home/naveen/CLionProjects/tgbot-cpp/include   -Wall -g -fPIC   -std=c++14 -o CMakeFiles/TgBot.dir/src/types/InputFile.cpp.o -c /home/naveen/CLionProjects/tgbot-cpp/src/types/InputFile.cpp",
+  "file": "/home/naveen/CLionProjects/tgbot-cpp/src/types/InputFile.cpp"
+}
+]
