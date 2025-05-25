@@ -69,7 +69,7 @@ string BoostHttpOnlySslClient::makeRequest(const Url& url, const vector<HttpReqA
         std::string sMsg("TIMEOUT on read client data. Client IP: ");
         
         sMsg.append(socket.next_layer().remote_endpoint().address().to_string());
-        _ioService.reset();
+        _ioService.restart();
         
         throw std::exception();
     }      

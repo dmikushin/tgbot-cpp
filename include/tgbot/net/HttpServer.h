@@ -160,7 +160,7 @@ protected:
         });
     }
 
-    boost::asio::io_service _ioService;
+    boost::asio::io_context _ioService;
     boost::asio::basic_socket_acceptor<Protocol> _acceptor;
     boost::asio::basic_stream_socket<Protocol> _socket;
     const ServerHandler _handler;
