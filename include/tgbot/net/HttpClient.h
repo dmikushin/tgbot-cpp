@@ -4,6 +4,7 @@
 #include "tgbot/net/Url.h"
 #include "tgbot/net/HttpReqArg.h"
 
+#include <cinttypes>
 #include <string>
 #include <vector>
 
